@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mutatók</title>
+  
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body class="">
+  <header>
+    <nav>
+      <div class="container">
+        
+        <a href="./index.html" class="brand">
+          <img src="./assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
+          Kassák<span>.</span><wbr>digital
+        </a>
+        
+        <div class="nav-links">
+          <a href="./index.html">Főoldal</a>
+          <a href="./corpora.html">Korpuszok</a>
+          <a href="./indices.html">Mutatók</a>
+          <a href="./about.html">A projektről</a>
+          <a href="./impressum.html">Impresszum</a>
+          <a href="./search.html">Keresés</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    
+<div class="container">
+  <h1>Mutatók</h1>
+  <div class="intro-text">
+    <p>Ez a gyűjtemény a Kassák-levelezés kiadásához tartozó entitások és adataik gyűjtőhelye. A levelekben előforduló személyek, helyszínek, művek és periodikumok azonosítását és összekapcsolását szolgálja.</p>
+
+  </div>
+
+  <div class="card-grid">
+    <a href="./persons.html" class="card">
+      <div class="card-header">Személyek</div>
+      <div class="card-body">A levelezésben előforduló személynevek és adataik.</div>
+      <div class="card-footer">415 bejegyzés</div>
+    </a>
+    <a href="./places.html" class="card">
+      <div class="card-header">Helyszínek</div>
+      <div class="card-body">Földrajzi helyek és települések mutatója.</div>
+      <div class="card-footer">6 bejegyzés</div>
+    </a>
+    <a href="./organizations.html" class="card">
+      <div class="card-header">Periodikumok</div>
+      <div class="card-body">A levelezésben előforduló sajtótermékek és adataik.</div>
+      <div class="card-footer">55 bejegyzés</div>
+    </a>
+    <a href="./works.html" class="card">
+      <div class="card-header">Művek</div>
+      <div class="card-body">Irodalmi és művészeti alkotások mutatója.</div>
+      <div class="card-footer">188 bejegyzés</div>
+    </a>
+    <a href="./events.html" class="card">
+      <div class="card-header">Események</div>
+      <div class="card-body">A levelezésben előforduló események és adataik.</div>
+      <div class="card-footer">35 bejegyzés</div>
+    </a>
+  </div>
+</div>
+
+  </main>
+
+  <br><br>
+  <footer class="container">
+    <hr>
+    <div class="footer-content">
+      <div class="footer-logos">
+        <a href="https://kassakmuzeum.hu" target="_blank" rel="noopener">
+          <img src="./assets/Kassak_logo.jpg" alt="Kassák Múzeum">
+        </a>
+        <a href="https://www.pim.hu" target="_blank" rel="noopener">
+          <img src="./assets/pim_logo.svg" alt="Petőfi Irodalmi Múzeum">
+        </a>
+        <img src="./assets/NKFIA_infoblokk_projekt_fekvo_2019_HU.png" alt="NKFIA">
+      </div>
+      <div class="footer-info">
+        <p><a href="./impressum.html">Impresszum</a></p>
+        <p>Kassák Múzeum © 2026 Minden jog fenntartva. Fejlesztette Czinkos Zsolt.</p>
+      </div>
+    </div>
+  </footer>
+  <br>
+  <br>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      // Jump immediately to the element and highlight
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
+    });
+  </script>
+  
+</body>
+</html>

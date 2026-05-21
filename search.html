@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keresés</title>
+  
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body class="">
+  <header>
+    <nav>
+      <div class="container">
+        
+        <a href="./index.html" class="brand">
+          <img src="./assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
+          Kassák<span>.</span><wbr>digital
+        </a>
+        
+        <div class="nav-links">
+          <a href="./index.html">Főoldal</a>
+          <a href="./corpora.html">Korpuszok</a>
+          <a href="./indices.html">Mutatók</a>
+          <a href="./about.html">A projektről</a>
+          <a href="./impressum.html">Impresszum</a>
+          <a href="./search.html">Keresés</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    
+<div class="container">
+  <h1>Keresés</h1>
+  <div class="intro-text">
+  </div>
+
+  <div class="search-box">
+    <input id="search-input" type="search" placeholder="Keresés a korpuszokban" autofocus>
+    <p id="status">Azonnali keresés a teljes szövegben.</p>
+  </div>
+
+  <div id="results-container">
+    <ul id="results"></ul>
+  </div>
+</div>
+
+  </main>
+
+  <br><br>
+  <footer class="container">
+    <hr>
+    <div class="footer-content">
+      <div class="footer-logos">
+        <a href="https://kassakmuzeum.hu" target="_blank" rel="noopener">
+          <img src="./assets/Kassak_logo.jpg" alt="Kassák Múzeum">
+        </a>
+        <a href="https://www.pim.hu" target="_blank" rel="noopener">
+          <img src="./assets/pim_logo.svg" alt="Petőfi Irodalmi Múzeum">
+        </a>
+        <img src="./assets/NKFIA_infoblokk_projekt_fekvo_2019_HU.png" alt="NKFIA">
+      </div>
+      <div class="footer-info">
+        <p><a href="./impressum.html">Impresszum</a></p>
+        <p>Kassák Múzeum © 2026 Minden jog fenntartva. Fejlesztette Czinkos Zsolt.</p>
+      </div>
+    </div>
+  </footer>
+  <br>
+  <br>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      // Jump immediately to the element and highlight
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
+    });
+  </script>
+  
+<script type="module">
+  import { init, search } from './search/search.js';
+
+  const input   = document.getElementById('search-input');
+  const status  = document.getElementById('status');
+  const results = document.getElementById('results');
+
+  const ready = init('./search').then(() => {
+    status.textContent = '';
+
+    // Handle query parameter from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if (q) {
+      input.value = q;
+      runSearch();
+    }
+  }).catch(err => {
+    status.textContent = `Hiba: ${err.message}`;
+  });
+
+  let debounceTimer;
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(runSearch, 250);
+  });
+
+  async function runSearch() {
+    const query = input.value.trim();
+    if (!query) { results.innerHTML = ''; status.textContent = ''; return; }
+
+    await ready;
+    status.textContent = 'Keresés…';
+
+    const hits = await search(query, './search');
+
+    if (!hits.length) {
+      status.textContent = 'Nincs találat.';
+      results.innerHTML = '';
+      return;
+    }
+
+    status.textContent = `${hits.length} találat`;
+    results.innerHTML = hits.map(({ corpus_id, corpus_name, path, title, score }) => {
+      const href = `./corpus/${corpus_id}/${path.replace(/\.xml$/, '.html')}`;
+      const label = title || path.replace(/\\/g, '/').split('/').pop().replace(/\.xml$/, '').replace(/_tei$/, '');
+      return `
+        <li>
+          <div class="result-item">
+            <div class="result-corpus">${corpus_name}</div>
+            <div class="result-row">
+              <a href="${href}" class="result-link">${label}</a>
+              <span class="result-score">${score} egyezés</span>
+            </div>
+          </div>
+        </li>`;
+    }).join('');
+
+  }
+</script>
+
+</body>
+</html>

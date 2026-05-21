@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keresés — Kassák Digitális Kiadás</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="container">
+        <a href="/" class="brand">Kassák<span>.</span><wbr>digital</a>
+        <div class="nav-links">
+          <a href="/corpus/levelezes/">Levelezés</a>
+          <a href="/persons.html">Személyek</a>
+          <a href="/places.html">Helyek</a>
+          <a href="/organizations.html">Szervezetek</a>
+          <a href="/works.html">Művek</a>
+          <a href="/search.html">Keresés</a>
+          <a href="/about.html">Projekt</a>
+          <a href="/impressum.html">Impressum</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Keresés</h1>
+      <div class="search-box">
+        <input id="search-input" type="search" placeholder="Keresési kifejezés…" autofocus>
+        <p id="status">Betöltés…</p>
+      </div>
+      <ul id="results"></ul>
+    </div>
+  </main>
+
+  <footer class="container">
+    <hr>
+    <p>Kassák Lajos Digitális Kritikai Kiadás — Kassák Múzeum – Petőfi Irodalmi Múzeum &amp; Országos Széchényi Könyvtár</p>
+  </footer>
+  <script type="module">
+    import { init, search } from './search.js';
+
+    const input   = document.getElementById('search-input');
+    const status  = document.getElementById('status');
+    const results = document.getElementById('results');
+
+    const ready = init('.').then(() => {
+      status.textContent = 'Készen áll.';
+      
+      // Handle query parameter from hero search
+      const urlParams = new URLSearchParams(window.location.search);
+      const q = urlParams.get('q');
+      if (q) {
+        input.value = q;
+        runSearch();
+      }
+    }).catch(err => {
+      status.textContent = `Hiba: ${err.message}`;
+    });
+
+    let debounceTimer;
+    input.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(runSearch, 250);
+    });
+
+    async function runSearch() {
+      const query = input.value.trim();
+      if (!query) { results.innerHTML = ''; status.textContent = ''; return; }
+
+      await ready;
+      status.textContent = 'Keresés…';
+
+      const hits = await search(query, '.');
+
+      if (!hits.length) {
+        status.textContent = 'Nincs találat.';
+        results.innerHTML = '';
+        return;
+      }
+
+      status.textContent = `${hits.length} találat`;
+      results.innerHTML = hits.map(({ corpus_id, corpus_name, path, title, score }) => {
+        const href = `/corpus/${corpus_id}/${path.replace(/\.xml$/, '.html')}`;
+        const label = title || path.replace(/\\/g, '/').split('/').pop().replace(/\.xml$/, '');
+        return `
+          <li>
+            <div class="result-item">
+              <div class="result-corpus">${corpus_name}</div>
+              <div class="result-row">
+                <a href="${href}" class="result-link">${label}</a>
+                <span class="result-score">${score} egyezés</span>
+              </div>
+            </div>
+          </li>`;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

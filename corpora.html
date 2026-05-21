@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korpuszok</title>
+  
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body class="">
+  <header>
+    <nav>
+      <div class="container">
+        
+        <a href="./index.html" class="brand">
+          <img src="./assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
+          Kassák<span>.</span><wbr>digital
+        </a>
+        
+        <div class="nav-links">
+          <a href="./index.html">Főoldal</a>
+          <a href="./corpora.html">Korpuszok</a>
+          <a href="./indices.html">Mutatók</a>
+          <a href="./about.html">A projektről</a>
+          <a href="./impressum.html">Impresszum</a>
+          <a href="./search.html">Keresés</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    
+<div class="container">
+  <h1>Korpuszok</h1>
+  <div class="intro-text">
+    <p>A Kassák Múzeum–Petőfi Irodalmi Múzeum digitális filológiai gyűjteménye. A Kassák Múzeum ezres nagyságrendű levelet őriz a művész hagyatékából. A gyűjtemény Kassák anyakönyvi kivonataitól kezdve a művésszé válás dokumentumain át a nemzetközi művészeti térbe történő kilépésen át egészen az író 1967-es haláláig tartalmaz dokumentumokat. Kassák Lajos avantgárd alkotó levelezése egyedülálló betekintést enged a modern művészet magyar és nemzetközi közegeinek hétköznapjaiba. A Kassák Múzeum 2026-tól kezdve folyamatosan, jól elkülöníthető korpuszok szerint, egy kritikai kiadás igényével teszi közzé ezt a dokumentumegyüttest.</p>
+<p>A projekt a Kassák Lajos és Simon Jolán 1909 és 1928 közötti levelezésének digitális kritikai kiadása és a modernségkutatás új perspektívái című OTKA-pályázat keretében készült. Az FK 139325 azonosító-számú projekt fogadóintézménye a Kassák Múzeum–Petőfi Irodalmi Múzeum–Magyar Nemzeti Múzeum Közgyűjteményi Központ.</p>
+
+  </div>
+
+  
+  <div class="card-grid">
+    
+    <a href="./corpus/levelezes/index.html" class="card">
+      <div class="card-header">A Kassák Lajos és Simon Jolán közti levelezés</div>
+      <div class="card-body">
+	      <p>A Kassák Lajos és Simon Jolán közötti levelezés gyűjteménye (1908–1938).</p>
+      </div>
+      <div class="card-footer">
+        147 dokumentum
+      </div>
+    </a>
+    
+  </div>
+  
+</div>
+
+  </main>
+
+  <br><br>
+  <footer class="container">
+    <hr>
+    <div class="footer-content">
+      <div class="footer-logos">
+        <a href="https://kassakmuzeum.hu" target="_blank" rel="noopener">
+          <img src="./assets/Kassak_logo.jpg" alt="Kassák Múzeum">
+        </a>
+        <a href="https://www.pim.hu" target="_blank" rel="noopener">
+          <img src="./assets/pim_logo.svg" alt="Petőfi Irodalmi Múzeum">
+        </a>
+        <img src="./assets/NKFIA_infoblokk_projekt_fekvo_2019_HU.png" alt="NKFIA">
+      </div>
+      <div class="footer-info">
+        <p><a href="./impressum.html">Impresszum</a></p>
+        <p>Kassák Múzeum © 2026 Minden jog fenntartva. Fejlesztette Czinkos Zsolt.</p>
+      </div>
+    </div>
+  </footer>
+  <br>
+  <br>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      // Jump immediately to the element and highlight
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
+    });
+  </script>
+  
+</body>
+</html>
