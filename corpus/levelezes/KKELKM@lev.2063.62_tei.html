@@ -374,7 +374,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KOHA_109158":{"name":"Fenyő Miksa","key":"KOHA_109158","nymRef":"Fenyő Miksa","idnos":[]},"KL_szemely_0651":{"name":"Fenyő Iván","key":"KL_szemely_0651","nymRef":"Fenyő Iván","idnos":[]},"KOHA_112512":{"name":"Hatvany Lajos","key":"KOHA_112512","nymRef":"Hatvany Lajos","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0281":{"name":"Szegi Pál","key":"KL_szemely_0281","nymRef":"Szegi Pál","idnos":[]},"KL_szemely_0211":{"name":"Palasovszky Ödön","key":"KL_szemely_0211","nymRef":"Palasovszky Ödön","idnos":[]}},"places":{},"orgs":{},"works":{"KL_mucim_1322":{"name":"Hamlet halála (Le Mariage d'Hamlet)","key":"KL_mucim_1322","author":"Jean Sarment","type":"primary-literature","subtype":"literary-work"}},"events":{"KL_esemeny_0072":{"name":"Francia költők előadóestje","key":"KL_esemeny_0072","when":"1926-03-28","from":"","to":"","corresp":"Tamás Aladár"}}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -438,17 +453,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -457,6 +467,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -491,6 +517,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

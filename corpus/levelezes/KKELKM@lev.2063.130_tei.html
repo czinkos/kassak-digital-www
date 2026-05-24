@@ -505,7 +505,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0284":{"name":"Székely Jenő","key":"KL_szemely_0284","nymRef":"Székely Jenő","idnos":[]},"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0479":{"name":"Istenes Erzsébet","key":"KL_szemely_0479","nymRef":"Istenes Erzsébet","idnos":[]},"KL_szemely_0024":{"name":"Bergmann Teréz","key":"KL_szemely_0024","nymRef":"Bergmann Teréz","idnos":[]},"KL_szemely_0203":{"name":"Nagy Rudolf","key":"KL_szemely_0203","nymRef":"Nagy Rudolf","idnos":[]},"KL_szemely_0202":{"name":"Nagy Piroska","key":"KL_szemely_0202","nymRef":"Nagy Piroska","idnos":[]},"KL_szemely_0363":{"name":"Fenyvesi Andor","key":"KL_szemely_0363","nymRef":"Fenyvesi Andor","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0478":{"name":"Illyés Gyula","key":"KL_szemely_0478","nymRef":"Illyés Gyula","idnos":[]},"KL_szemely_0147":{"name":"Kerpel Jenő","key":"KL_szemely_0147","nymRef":"Kerpel Jenő","idnos":[]},"KL_szemely_0472":{"name":"Füst Milán","key":"KL_szemely_0472","nymRef":"Füst Milán","idnos":[]},"KOHA_95108":{"name":"Ady Endre","key":"KOHA_95108","nymRef":"Ady Endre","idnos":[]},"KOHA_97697":{"name":"Babits Mihály","key":"KOHA_97697","nymRef":"Babits Mihály","idnos":[]},"KOHA_114617":{"name":"Kaffka Margit","key":"KOHA_114617","nymRef":"Kaffka Margit","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0364":{"name":"Ismeretlen","key":"KL_szemely_0364","nymRef":"Ismeretlen","idnos":[]},"KL_szemely_0365":{"name":"Krivácsy Miklós","key":"KL_szemely_0365","nymRef":"Krivácsy Miklós","idnos":[]}},"places":{},"orgs":{},"works":{"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0051":{"name":"Monoton","key":"KL_mucim_0051","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0052":{"name":"Örömhöz","key":"KL_mucim_0052","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0053":{"name":"Fiatal munkás","key":"KL_mucim_0053","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0111":{"name":"Éposz Wagner maszkjában","key":"KL_mucim_0111","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0054":{"name":"Anyaság","key":"KL_mucim_0054","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0056":{"name":"Mesteremberek","key":"KL_mucim_0056","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1330":{"name":"Stimmen für Europa. Ein Chor ungarischer freier Rhythmen.","key":"KL_mucim_1330","author":"Kerpel Jenő","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0191":{"name":"A reklám","key":"KL_mucim_0191","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -569,17 +584,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -588,6 +598,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -622,6 +648,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

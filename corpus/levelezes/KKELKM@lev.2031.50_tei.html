@@ -376,7 +376,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0031":{"name":"Bortnyik Sándor","key":"KL_szemely_0031","nymRef":"Bortnyik Sándor","idnos":[]},"KOHA_121317":{"name":"Osvát Ernő","key":"KOHA_121317","nymRef":"Osvát Ernő","idnos":[]},"KL_szemely_0016":{"name":"Barta Lajos","key":"KL_szemely_0016","nymRef":"Barta Lajos","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]}},"places":{},"orgs":{"KL_periodika_0102":{"name":"Magyar Hírlap","key":"KL_periodika_0102","nymRef":"Magyar Hírlap","pimId":"","refs":[]},"KL_periodika_0049":{"name":"Napkelet","key":"KL_periodika_0049","nymRef":"Napkelet","pimId":"","refs":[]},"KL_periodika_0003":{"name":"A Hét","key":"KL_periodika_0003","nymRef":"A Hét","pimId":"","refs":[]},"KL_periodika_0058":{"name":"Színházi Élet","key":"KL_periodika_0058","nymRef":"Színházi Élet","pimId":"","refs":[]}},"works":{"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -440,17 +455,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0031":{"name":"Bortnyik Sándor","k
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -459,6 +469,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0031":{"name":"Bortnyik Sándor","k
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -493,6 +519,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0031":{"name":"Bortnyik Sándor","k
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

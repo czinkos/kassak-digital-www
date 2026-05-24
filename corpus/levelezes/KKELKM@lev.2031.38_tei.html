@@ -461,7 +461,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0013":{"name":"Balogh Vilma","key":"KL_szemely_0013","nymRef":"Balogh Vilma","idnos":[]},"KOHA_114774":{"name":"Karinthy Frigyes","key":"KOHA_114774","nymRef":"Karinthy Frigyes","idnos":[]},"KL_szemely_0155":{"name":"Komlós Aladár","key":"KL_szemely_0155","nymRef":"Komlós Aladár","idnos":[]}," KL_szemely_0140":{"name":"Kassák Lajos","key":" KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KOHA_124122":{"name":"Schöpflin Aladár","key":"KOHA_124122","nymRef":"Schöpflin Aladár","idnos":[]},"KL_szemely_0024":{"name":"Bergmann Teréz","key":"KL_szemely_0024","nymRef":"Bergmann Teréz","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0296":{"name":"Tevan Andor","key":"KL_szemely_0296","nymRef":"Tevan Andor","idnos":[]},"KL_szemely_0664":{"name":"Kner Imre","key":"KL_szemely_0664","nymRef":"Kner Imre","idnos":[]},"KL_szemely_0209":{"name":"Paál Ferenc","key":"KL_szemely_0209","nymRef":"Paál Ferenc","idnos":[]},"KL_szemely_0120":{"name":"Ignotus Pál","key":"KL_szemely_0120","nymRef":"Ignotus Pál","idnos":[]},"KL_szemely_0665":{"name":" Tormay Cécile","key":"KL_szemely_0665","nymRef":" Tormay Cécile","idnos":[]},"KL_szemely_0191":{"name":"Melléky Kornél","key":"KL_szemely_0191","nymRef":"Melléky Kornél","idnos":[]},"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0266":{"name":"Hans Suschny","key":"KL_szemely_0266","nymRef":"Hans Suschny","idnos":[]}},"places":{},"orgs":{"KL_periodika_0051":{"name":"Népszava","key":"KL_periodika_0051","nymRef":"Népszava","pimId":"","refs":[]},"KL_periodika_0059":{"name":"Szocializmus","key":"KL_periodika_0059","nymRef":"Szocializmus","pimId":"","refs":[]},"KL_periodika_0068":{"name":"Nyugat","key":"KL_periodika_0068","nymRef":"Nyugat","pimId":"","refs":[]},"KL_periodika_0017":{"name":"Esti Kurir","key":"KL_periodika_0017","nymRef":"Esti Kurir","pimId":"","refs":[]},"KL_periodika_0049":{"name":"Napkelet","key":"KL_periodika_0049","nymRef":"Napkelet","pimId":"","refs":[]},"KL_periodika_0046":{"name":"Magyar Írás","key":"KL_periodika_0046","nymRef":"Magyar Írás","pimId":"","refs":[]}},"works":{"KL_mucim_1050":{"name":"Kassák Lajos –  „Tisztaság könyve”","key":"KL_mucim_1050","author":"Hevesy Iván","type":"primary-literature","subtype":"study"},"KL_mucim_1331":{"name":"Tisztaság Könyve. Kassák Lajos új könyve. Horizont-kiadás.","key":"KL_mucim_1331","author":"Balogh Vilma","type":"primary-literature","subtype":"study"},"KL_mucim_1101":{"name":"Irodalmi Figyelő (rovat) Kassák Lajos –  Tisztaság könyve","key":"KL_mucim_1101","author":"Komlós Aladár","type":"primary-literature","subtype":"study"},"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0118":{"name":"Egy ember élete","key":"KL_mucim_0118","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1332":{"name":"Kassák Lajos –  Tisztaság könyve","key":"KL_mucim_1332","author":"Melléky Kornél","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -525,17 +540,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -544,6 +554,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -578,6 +604,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

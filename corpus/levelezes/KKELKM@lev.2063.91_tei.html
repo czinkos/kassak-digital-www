@@ -503,7 +503,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0159":{"name":"Korcsmáros Nándor","key":"KL_szemely_0159","nymRef":"Korcsmáros Nándor","idnos":[]},"KL_szemely_0308":{"name":"Váry Albert","key":"KL_szemely_0308","nymRef":"Váry Albert","idnos":[]},"KL_szemely_0081":{"name":"Gellért Lajos","key":"KL_szemely_0081","nymRef":"Gellért Lajos","idnos":[]},"KL_szemely_0307":{"name":"Varsányi Géza ","key":"KL_szemely_0307","nymRef":"Varsányi Géza ","idnos":[]},"KL_szemely_0058":{"name":"Erg Ágoston","key":"KL_szemely_0058","nymRef":"Erg Ágoston","idnos":[]},"KL_szemely_0024":{"name":"Bergmann Teréz","key":"KL_szemely_0024","nymRef":"Bergmann Teréz","idnos":[]},"KL_szemely_0127":{"name":"József Attila","key":"KL_szemely_0127","nymRef":"József Attila","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0087":{"name":"Gerő György","key":"KL_szemely_0087","nymRef":"Gerő György","idnos":[]},"KL_szemely_0186":{"name":"Márer György","key":"KL_szemely_0186","nymRef":"Márer György","idnos":[]},"KL_szemely_0688":{"name":"Lili Damita","key":"KL_szemely_0688","nymRef":"Lili Damita","idnos":[]},"KL szemely 0201":{"name":"Nagy Etel","key":"KL szemely 0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0479":{"name":"Istenes Erzsébet","key":"KL_szemely_0479","nymRef":"Istenes Erzsébet","idnos":[]},"KL_szemely_0188":{"name":"Matics Ilona","key":"KL_szemely_0188","nymRef":"Matics Ilona","idnos":[]},"KL_szemely_0692":{"name":"Matics István","key":"KL_szemely_0692","nymRef":"Matics István","idnos":[]},"KL_szemely_0286":{"name":"Szélpál Árpád","key":"KL_szemely_0286","nymRef":"Szélpál Árpád","idnos":[]},"KL_szemely_0274":{"name":"Szántó György","key":"KL_szemely_0274","nymRef":"Szántó György","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]}},"places":{},"orgs":{"KL_periodika_0044":{"name":"Ma","key":"KL_periodika_0044","nymRef":"Ma","pimId":"","refs":[]},"KL_periodika_0002":{"name":"365","key":"KL_periodika_0002","nymRef":"365","pimId":"","refs":[]},"KL_periodika_0024":{"name":"IS","key":"KL_periodika_0024","nymRef":"IS","pimId":"","refs":[]},"KL_periodika_0054":{"name":"Periszkop","key":"KL_periodika_0054","nymRef":"Periszkop","pimId":"","refs":[]}},"works":{"KL_mucim_0037":{"name":"Álláspont –  tények és új lehetőségek","key":"KL_mucim_0037","author":"Kassák Lajos","type":"primary-literature","subtype":"study"},"KL_mucim_0118":{"name":"Egy ember élete","key":"KL_mucim_0118","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1310":{"name":"Tisztelt hullaház","key":"KL_mucim_1310","author":"Barta Sándor","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0109":{"name":"Életsiratás","key":"KL_mucim_0109","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0015":{"name":"Világanyám –  Kassák Lajos összes versei","key":"KL_mucim_0015","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1097":{"name":"Das Spielzeug von Paris","key":"KL_mucim_1097","author":"Kertész Mihály","type":"primary-literature","subtype":"other"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -567,17 +582,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -586,6 +596,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -620,6 +646,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

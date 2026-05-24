@@ -448,7 +448,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0031":{"name":"Bortnyik Sándor","key":"KL_szemely_0031","nymRef":"Bortnyik Sándor","idnos":[]},"KL_szemely_0232":{"name":"Remenyik Zsigmond László","key":"KL_szemely_0232","nymRef":"Remenyik Zsigmond László","idnos":[]},"KL_szemely_0155":{"name":"Komlós Aladár","key":"KL_szemely_0155","nymRef":"Komlós Aladár","idnos":[]},"KL_szemely_0207":{"name":"Németh Andor","key":"KL_szemely_0207","nymRef":"Németh Andor","idnos":[]},"KL_szemely_0010":{"name":"Baja Bendek ","key":"KL_szemely_0010","nymRef":"Baja Bendek ","idnos":[]},"KL_szemely_0082":{"name":"Genthon István","key":"KL_szemely_0082","nymRef":"Genthon István","idnos":[]},"KL_szemely_0024":{"name":"Bergmann Teréz","key":"KL_szemely_0024","nymRef":"Bergmann Teréz","idnos":[]},"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0203":{"name":"Nagy Rudolf","key":"KL_szemely_0203","nymRef":"Nagy Rudolf","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]}},"places":{},"orgs":{"KL_periodika_0068":{"name":"Nyugat","key":"KL_periodika_0068","nymRef":"Nyugat","pimId":"","refs":[]},"KL_periodika_0051":{"name":"Népszava","key":"KL_periodika_0051","nymRef":"Népszava","pimId":"","refs":[]},"KL_periodika_0011":{"name":"Az Újság","key":"KL_periodika_0011","nymRef":"Az Újság","pimId":"","refs":[]}},"works":{"KL_mucim_1017":{"name":"Borisz Pilnják –  Az orosz forradalom írói","key":"KL_mucim_1017","author":"Bonkáló Sándor","type":"primary-literature","subtype":"study"},"KL_mucim_0026":{"name":"Munkás Testedző Egyesület plakátterv","key":"KL_mucim_0026","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_0025":{"name":"Corvin plakátterv","key":"KL_mucim_0025","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_0064":{"name":"Tó mozi plakát","key":"KL_mucim_0064","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_0049":{"name":"„Véres vasárnap.” Új orosz film. Rendezte –  I. Moszkwin.","key":"KL_mucim_0049","author":"Kassák Lajos","type":"primary-literature","subtype":"study"},"KL_mucim_0024":{"name":"Plakáttev Fischer Simon számára","key":"KL_mucim_0024","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_1140":{"name":"A két varjú","key":"KL_mucim_1140","author":"Remenyik Zsigmond László","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1128":{"name":"„Az ember tragédiája.” A Városi Színház előadása. ","key":"KL_mucim_1128","author":"Németh Andor","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0076":{"name":"Művészet és Propaganda. (Néhány szerény megjegyzés.)","key":"KL_mucim_0076","author":"Kassák Lajos","type":"primary-literature","subtype":"study"},"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -512,17 +527,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -531,6 +541,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -565,6 +591,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

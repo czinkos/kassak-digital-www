@@ -85,12 +85,45 @@
 
     // ── OSD lifecycle ─────────────────────────────────────────────────────────
 
+    let osdLoadingEl = null;
+    function showOsdLoading() {
+        if (!osdLoadingEl) {
+            osdLoadingEl = document.createElement('div');
+            osdLoadingEl.className = 'facs-loading-overlay';
+            osdLoadingEl.innerHTML = '<div class="facs-spinner"></div>';
+        }
+        osdEl.appendChild(osdLoadingEl);
+    }
+    function hideOsdLoading() {
+        if (osdLoadingEl && osdLoadingEl.parentNode) {
+            osdLoadingEl.parentNode.removeChild(osdLoadingEl);
+        }
+    }
+
+    let osdErrorEl = null;
+    function showOsdError() {
+        hideOsdLoading();
+        if (!osdErrorEl) {
+            osdErrorEl = document.createElement('div');
+            osdErrorEl.className = 'facs-error-message';
+            osdErrorEl.textContent = 'Hiányzó fakszimile képfájl!';
+        }
+        osdEl.appendChild(osdErrorEl);
+    }
+    function hideOsdError() {
+        if (osdErrorEl && osdErrorEl.parentNode) {
+            osdErrorEl.parentNode.removeChild(osdErrorEl);
+        }
+    }
+
     function initOsd(pageIndex) {
         if (osdViewer) {
             loadPage(pageIndex);
             return;
         }
         osdReady = false;
+        showOsdLoading();
+        hideOsdError();
         const page = pages[pageIndex];
         osdViewer = OpenSeadragon({
             element: osdEl,
@@ -110,6 +143,8 @@
         });
         osdViewer.addHandler('open', function () {
             osdReady = true;
+            hideOsdLoading();
+            hideOsdError();
             osdLoadedPageIndex = pageIndex;
             currentPageIndex = pageIndex;
 
@@ -127,11 +162,16 @@
                 pendingZone = null;
             }
         });
+        osdViewer.addHandler('open-failed', function () {
+            showOsdError();
+        });
     }
 
     function loadPage(pageIndex) {
         if (!osdViewer) return;
         osdReady = false;
+        showOsdLoading();
+        hideOsdError();
         osdViewer.clearOverlays();
         currentPageIndex = pageIndex;
         const page = pages[pageIndex];
@@ -143,6 +183,8 @@
         osdViewer.addHandler('open', function handler() {
             osdViewer.removeHandler('open', handler);
             osdReady = true;
+            hideOsdLoading();
+            hideOsdError();
             osdLoadedPageIndex = pageIndex;
             updateThumbActive();
             if (mode === 'image') addZoneOverlays(pageIndex);
@@ -150,6 +192,10 @@
                 panToZone(pendingZone);
                 pendingZone = null;
             }
+        });
+        osdViewer.addHandler('open-failed', function handler() {
+            osdViewer.removeHandler('open-failed', handler);
+            showOsdError();
         });
         updateThumbActive();
     }
@@ -192,6 +238,37 @@
 
     // ── stripe mode ───────────────────────────────────────────────────────────
 
+    let stripeLoadingEl = null;
+    function showStripeLoading() {
+        if (!stripeLoadingEl) {
+            stripeLoadingEl = document.createElement('div');
+            stripeLoadingEl.className = 'facs-loading-overlay';
+            stripeLoadingEl.innerHTML = '<div class="facs-spinner"></div>';
+        }
+        stripeEl.appendChild(stripeLoadingEl);
+    }
+    function hideStripeLoading() {
+        if (stripeLoadingEl && stripeLoadingEl.parentNode) {
+            stripeLoadingEl.parentNode.removeChild(stripeLoadingEl);
+        }
+    }
+
+    let stripeErrorEl = null;
+    function showStripeError() {
+        hideStripeLoading();
+        if (!stripeErrorEl) {
+            stripeErrorEl = document.createElement('div');
+            stripeErrorEl.className = 'facs-error-message';
+            stripeErrorEl.textContent = 'Hiányzó fakszimile képfájl!';
+        }
+        stripeEl.appendChild(stripeErrorEl);
+    }
+    function hideStripeError() {
+        if (stripeErrorEl && stripeErrorEl.parentNode) {
+            stripeErrorEl.parentNode.removeChild(stripeErrorEl);
+        }
+    }
+
     const stripeImg = document.createElement('img');
     stripeEl.appendChild(stripeImg);
 
@@ -214,6 +291,17 @@
         const offset = baseStripeH * 0.10;
         const stripeH = baseStripeH + 2 * offset;
 
+        showStripeLoading();
+        hideStripeError();
+        stripeImg.onload = function() {
+            hideStripeLoading();
+            hideStripeError();
+            stripeImg.style.display = 'block';
+        };
+        stripeImg.onerror = function() {
+            showStripeError();
+            stripeImg.style.display = 'none';
+        };
         stripeImg.src = zone.imageUrl;
         stripeImg.style.width = vw + 'px';
         stripeImg.style.top = -(zone.uly * scale - offset) + 'px';
@@ -228,6 +316,8 @@
 
     function hideStripe() {
         stripeEl.style.display = 'none';
+        hideStripeLoading();
+        hideStripeError();
     }
 
     // ── side-by-side mode ─────────────────────────────────────────────────────

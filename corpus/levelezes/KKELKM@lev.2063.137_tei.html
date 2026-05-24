@@ -570,7 +570,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0117":{"name":"Hevesy Iván","key":"KL_szemely_0117","nymRef":"Hevesy Iván","idnos":[]},"KL_szemely_0313":{"name":"Weltner Jakab","key":"KL_szemely_0313","nymRef":"Weltner Jakab","idnos":[]},"KL_szemely_0225":{"name":"Propper Sándor","key":"KL_szemely_0225","nymRef":"Propper Sándor","idnos":[]},"KL_szemely_0178":{"name":"Ligeti Pál","key":"KL_szemely_0178","nymRef":"Ligeti Pál","idnos":[]},"KL_szemely_0307":{"name":"Varsányi Géza ","key":"KL_szemely_0307","nymRef":"Varsányi Géza ","idnos":[]},"KOHA_314090":{"name":"Barna Sándor","key":"KOHA_314090","nymRef":"Barna Sándor","idnos":[]},"KL_szemely_0479":{"name":"Istenes Erzsébet","key":"KL_szemely_0479","nymRef":"Istenes Erzsébet","idnos":[]},"KL_szemely_0193":{"name":"Mikes Lajos","key":"KL_szemely_0193","nymRef":"Mikes Lajos","idnos":[]},"KL_szemely_0271":{"name":"Szabó Lőrinc ","key":"KL_szemely_0271","nymRef":"Szabó Lőrinc ","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0286":{"name":"Szélpál Árpád","key":"KL_szemely_0286","nymRef":"Szélpál Árpád","idnos":[]},"KOHA_114774":{"name":"Karinthy Frigyes","key":"KOHA_114774","nymRef":"Karinthy Frigyes","idnos":[]},"KL_szemely_0155":{"name":"Komlós Aladár","key":"KL_szemely_0155","nymRef":"Komlós Aladár","idnos":[]},"KOHA_124122":{"name":"Schöpflin Aladár","key":"KOHA_124122","nymRef":"Schöpflin Aladár","idnos":[]},"KL_szemely_0101":{"name":"Gyergyai Albert","key":"KL_szemely_0101","nymRef":"Gyergyai Albert","idnos":[]},"KL_szemely_0480":{"name":"Juhász Gyula","key":"KL_szemely_0480","nymRef":"Juhász Gyula","idnos":[]},"KL_szemely_0666":{"name":"Dick Katalin","key":"KL_szemely_0666","nymRef":"Dick Katalin","idnos":[]},"KL_szemely_0024":{"name":"Bergmann Teréz","key":"KL_szemely_0024","nymRef":"Bergmann Teréz","idnos":[]},"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0080":{"name":"Gáspár Endre","key":"KL_szemely_0080","nymRef":"Gáspár Endre","idnos":[]},"KL_szemely_0478":{"name":"Illyés Gyula","key":"KL_szemely_0478","nymRef":"Illyés Gyula","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0188":{"name":"Matics Ilona","key":"KL_szemely_0188","nymRef":"Matics Ilona","idnos":[]},"KL_szemely_0203":{"name":"Nagy Rudolf","key":"KL_szemely_0203","nymRef":"Nagy Rudolf","idnos":[]},"KL_szemely_0202":{"name":"Nagy Piroska","key":"KL_szemely_0202","nymRef":"Nagy Piroska","idnos":[]}},"places":{},"orgs":{"KL_periodika_0068":{"name":"Nyugat","key":"KL_periodika_0068","nymRef":"Nyugat","pimId":"","refs":[]},"KL_periodika_0051":{"name":"Népszava","key":"KL_periodika_0051","nymRef":"Népszava","pimId":"","refs":[]},"KL_periodika_0012":{"name":"Magyar Hírlap","key":"KL_periodika_0012","nymRef":"Magyar Hírlap","pimId":"","refs":[]},"KL_periodika_0067":{"name":"Világ","key":"KL_periodika_0067","nymRef":"Világ","pimId":"","refs":[]},"KL_periodika_0010":{"name":"Az Est","key":"KL_periodika_0010","nymRef":"Az Est","pimId":"","refs":[]}},"works":{"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1050":{"name":"Kassák Lajos –  „Tisztaság könyve”","key":"KL_mucim_1050","author":"Hevesy Iván","type":"primary-literature","subtype":"study"},"KL_mucim_1101":{"name":"Irodalmi Figyelő (rovat) Kassák Lajos –  Tisztaság könyve","key":"KL_mucim_1101","author":"Komlós Aladár","type":"primary-literature","subtype":"study"}},"events":{"KL_esemeny_0054":{"name":"Simo Jolán előadó estje","key":"KL_esemeny_0054","when":"1926-06-04","from":"","to":"","corresp":"Simon Jolán"}}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -634,17 +649,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0117":{"name":"Hevesy Iván","key":
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -653,6 +663,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0117":{"name":"Hevesy Iván","key":
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -687,6 +713,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0117":{"name":"Hevesy Iván","key":
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

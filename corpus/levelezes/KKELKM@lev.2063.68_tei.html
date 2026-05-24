@@ -575,7 +575,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0117":{"name":"Hevesy Iván","key":"KL_szemely_0117","nymRef":"Hevesy Iván","idnos":[]},"KL szemely 0201":{"name":"Nagy Etel","key":"KL szemely 0201","nymRef":"Nagy Etel","idnos":[]},"KL szemely 0202":{"name":"Nagy Piroska","key":"KL szemely 0202","nymRef":"Nagy Piroska","idnos":[]},"KL_szemely_0147":{"name":"Kerpel Jenő ","key":"KL_szemely_0147","nymRef":"Kerpel Jenő ","idnos":[]},"KL_szemely_0267":{"name":"Szabados Piroska","key":"KL_szemely_0267","nymRef":"Szabados Piroska","idnos":[]},"KL_szemely_0169":{"name":"Krausz Jakab","key":"KL_szemely_0169","nymRef":"Krausz Jakab","idnos":[]},"KL_szemely_0058":{"name":"Erg Ágoston","key":"KL_szemely_0058","nymRef":"Erg Ágoston","idnos":[]},"KL_szemely_0119":{"name":"Hont Ferenc","key":"KL_szemely_0119","nymRef":"Hont Ferenc","idnos":[]},"KL_szemely_0214":{"name":"Pápa József","key":"KL_szemely_0214","nymRef":"Pápa József","idnos":[]},"KL_szemely_0479":{"name":"Istenes Erzsébet","key":"KL_szemely_0479","nymRef":"Istenes Erzsébet","idnos":[]},"KL_szemely_0304":{"name":"Vajda Sándor","key":"KL_szemely_0304","nymRef":"Vajda Sándor","idnos":[]},"KL_szemely_0351":{"name":"Ismeretlen","key":"KL_szemely_0351","nymRef":"Ismeretlen","idnos":[]},"KL_szemely_0487":{"name":"Molnár Farkas","key":"KL_szemely_0487","nymRef":"Molnár Farkas","idnos":[]},"KL_szemely_0307":{"name":"Varsányi Géza","key":"KL_szemely_0307","nymRef":"Varsányi Géza","idnos":[]},"KL_szemely_0031":{"name":"Bortnyik Sándor","key":"KL_szemely_0031","nymRef":"Bortnyik Sándor","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]}},"places":{},"orgs":{"KL_periodika_0067":{"name":"Világ","key":"KL_periodika_0067","nymRef":"Világ","pimId":"","refs":[]},"KL_periodika_0105":{"name":"Kortárs","key":"KL_periodika_0105","nymRef":"Kortárs","pimId":"","refs":[]},"KL_periodika_0002":{"name":"365","key":"KL_periodika_0002","nymRef":"365","pimId":"","refs":[]}},"works":{"KL_mucim_1023":{"name":"Az Eiffel-torony násznépe (Les mariés de la tour Eiffel)","key":"KL_mucim_1023","author":"Jean Cocteau","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0056":{"name":"Mesteremberek","key":"KL_mucim_0056","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0033":{"name":"Mentor plakát","key":"KL_mucim_0033","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"}},"events":{"KL_esemeny_0003":{"name":"Simon Jolán előadása","key":"KL_esemeny_0003","when":"1925-04-03","from":"","to":"","corresp":"Simon Jolán"},"KL_esemeny_0074":{"name":"Zöld Szamár Színház ","key":"KL_esemeny_0074","when":"1925-03-25","from":"","to":"","corresp":"Palasovszky Ödön"},"KL_esemeny_0046":{"name":"Molnár Farkas építészeti munkái (kiállítás)","key":"KL_esemeny_0046","when":"","from":"1925-03-22","to":"1925-04-18","corresp":"Molnár Farkas"}}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -639,17 +654,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -658,6 +668,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -692,6 +718,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

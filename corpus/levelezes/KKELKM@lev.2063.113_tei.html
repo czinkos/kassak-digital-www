@@ -515,7 +515,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0143":{"name":"Kelemen Viktor","key":"KL_szemely_0143","nymRef":"Kelemen Viktor","idnos":[]},"KL_szemely_0293":{"name":"Szőke Kálmán","key":"KL_szemely_0293","nymRef":"Szőke Kálmán","idnos":[]},"KL_szemely_0699":{"name":"Pajor Rudolf","key":"KL_szemely_0699","nymRef":"Pajor Rudolf","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0034":{"name":"Bresztovszky Ede","key":"KL_szemely_0034","nymRef":"Bresztovszky Ede","idnos":[]},"KL_szemely_0295":{"name":"Tamás Aladár","key":"KL_szemely_0295","nymRef":"Tamás Aladár","idnos":[]},"KL_szemely_0155":{"name":"Komlós Aladár","key":"KL_szemely_0155","nymRef":"Komlós Aladár","idnos":[]},"KL_szemely_0197":{"name":"Nádass József","key":"KL_szemely_0197","nymRef":"Nádass József","idnos":[]},"KL_szemely_0304":{"name":"Vajda Sándor","key":"KL_szemely_0304","nymRef":"Vajda Sándor","idnos":[]},"KL_szemely_0263":{"name":"Strém István","key":"KL_szemely_0263","nymRef":"Strém István","idnos":[]},"KL_szemely_0087":{"name":"Gerő Görgy","key":"KL_szemely_0087","nymRef":"Gerő Görgy","idnos":[]},"KL_szemely_0127":{"name":"József Attila","key":"KL_szemely_0127","nymRef":"József Attila","idnos":[]},"KL_szemely_0157":{"name":"Komor András","key":"KL_szemely_0157","nymRef":"Komor András","idnos":[]},"KL_szemely_0296":{"name":"Tevan Andor","key":"KL_szemely_0296","nymRef":"Tevan Andor","idnos":[]},"KL_szemely_0647":{"name":"Bálint Lajos","key":"KL_szemely_0647","nymRef":"Bálint Lajos","idnos":[]},"KL_szemely_0203":{"name":"Nagy Rudolf","key":"KL_szemely_0203","nymRef":"Nagy Rudolf","idnos":[]},"KL_szemely_0646":{"name":"Kassák Teréz","key":"KL_szemely_0646","nymRef":"Kassák Teréz","idnos":[]},"KL_szemely_0013":{"name":"Balogh Vilma","key":"KL_szemely_0013","nymRef":"Balogh Vilma","idnos":[]}},"places":{},"orgs":{"KL_periodika_0011":{"name":"Ujság","key":"KL_periodika_0011","nymRef":"Ujság","pimId":"","refs":[]}},"works":{"KL_mucim_1086":{"name":"A fejedelem","key":"KL_mucim_1086","author":"Kelemen Viktor","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1191":{"name":"Szürrealizmus ","key":"KL_mucim_1191","author":"Tamás Aladár","type":"primary-literature","subtype":"literary-work"},"Expresszionizmus ":{"name":"KL_mucim_1192","key":"Expresszionizmus ","author":"Tamás Aladár","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1192":{"name":"Expresszionizmus","key":"KL_mucim_1192","author":"Tamás Aladár","type":"primary-literature","subtype":"study"},"KL_mucim_1193":{"name":"Tamás Aladár versei","key":"KL_mucim_1193","author":"Tamás Aladár","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1189":{"name":"A partok elindulnak","key":"KL_mucim_1189","author":"Tamás Aladár","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1196":{"name":"Tamás Aladár – A partok elindulnak","key":"KL_mucim_1196","author":"Tamás Aladár – A partok elindulnak","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0118":{"name":"Egy ember élete","key":"KL_mucim_0118","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -579,17 +594,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -598,6 +608,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -632,6 +658,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

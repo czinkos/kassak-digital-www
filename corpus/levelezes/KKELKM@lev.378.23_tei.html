@@ -473,7 +473,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]},"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0197":{"name":"Nádass József","key":"KL_szemely_0197","nymRef":"Nádass József","idnos":[]},"KOHA_114774":{"name":"Karinthy Frigyes","key":"KOHA_114774","nymRef":"Karinthy Frigyes","idnos":[]},"KL_szemely_0101":{"name":"Gyergyai Albert","key":"KL_szemely_0101","nymRef":"Gyergyai Albert","idnos":[]},"KL_szemely_0117":{"name":"Hevesy Iván","key":"KL_szemely_0117","nymRef":"Hevesy Iván","idnos":[]},"KL_szemely_0155":{"name":"Komlós Aladár","key":"KL_szemely_0155","nymRef":"Komlós Aladár","idnos":[]},"KL_szemely_0480":{"name":"Juhász Gyula","key":"KL_szemely_0480","nymRef":"Juhász Gyula","idnos":[]},"KL_szemely_0365":{"name":"Krivácsy Miklós","key":"KL_szemely_0365","nymRef":"Krivácsy Miklós","idnos":[]},"KL_szemely_0031":{"name":"Bortnyik Sándor","key":"KL_szemely_0031","nymRef":"Bortnyik Sándor","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0188":{"name":"Matics Ilona","key":"KL_szemely_0188","nymRef":"Matics Ilona","idnos":[]}},"places":{},"orgs":{"KL_periodika_0068":{"name":"Nyugat","key":"KL_periodika_0068","nymRef":"Nyugat","pimId":"","refs":[]},"KL_periodika_0099":{"name":"Korunk","key":"KL_periodika_0099","nymRef":"Korunk","pimId":"","refs":[]},"KL_periodika_0051":{"name":"Népszava","key":"KL_periodika_0051","nymRef":"Népszava","pimId":"","refs":[]}},"works":{"KL_mucim_0008":{"name":"Tisztaság könyve","key":"KL_mucim_0008","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_1050":{"name":"Kassák Lajos –  „Tisztaság könyve”","key":"KL_mucim_1050","author":"Hevesy Iván","type":"primary-literature","subtype":"study"},"KL_mucim_1101":{"name":"Irodalmi Figyelő (rovat) Kassák Lajos –  Tisztaság könyve","key":"KL_mucim_1101","author":"Komlós Aladár","type":"primary-literature","subtype":"study"},"KL_mucim_0011":{"name":"Máglyák énekelnek","key":"KL_mucim_0011","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0125":{"name":"Tipo Riez Fix Farbe Reklam","key":"KL_mucim_0125","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_0103":{"name":"Reklám-kioszk","key":"KL_mucim_0103","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"}},"events":{"KL_esemeny_0055":{"name":"Öt világrész költészete - Az Új föld előadóestélye","key":"KL_esemeny_0055","when":"1926-05-12","from":"","to":"","corresp":"Palasovszky Ödön, Tamás Aladár"}}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -537,17 +552,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -556,6 +566,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -590,6 +616,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

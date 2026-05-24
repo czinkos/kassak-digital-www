@@ -977,6 +977,7 @@ hr {
   min-height: 500px;
   background: #111;
   border: 2px solid var(--color-gray-mid);
+  position: relative;
 }
 
 [data-facs-mode="side"] #facs-osd {
@@ -1250,3 +1251,65 @@ hr {
   padding: 0.25rem 0.5rem;
   border-left: 3px solid var(--color-accent);
 }
+
+.entity-div p {
+  margin: 0.25rem 0;
+}
+
+/* Spinner overlay styling */
+.facs-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+.facs-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-gray-mid);
+  border-top: 4px solid var(--color-accent); /* Kassák Red accent */
+  border-radius: 50%;
+  animation: facs-spin 1s linear infinite;
+}
+@keyframes facs-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Facsimile error message overlay */
+.facs-error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 3px solid var(--color-accent); /* Kassák Red */
+  padding: 1.25rem 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: auto;
+  border-radius: 4px;
+}
+
+.facs-error-message::before {
+  content: "⚠️";
+  font-size: 2rem;
+  line-height: 1;
+}
+

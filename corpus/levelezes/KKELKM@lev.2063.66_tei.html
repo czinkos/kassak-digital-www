@@ -473,7 +473,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL_szemely_0201","nymRef":"Nagy Etel","idnos":[]},"KL_szemely_0140":{"name":"Kassák Lajos","key":"KL_szemely_0140","nymRef":"Kassák Lajos","idnos":[]},"KL_szemely_0019":{"name":"Begyáts László","key":"KL_szemely_0019","nymRef":"Begyáts László","idnos":[]},"KL_szemely_0211":{"name":"Palasovszky Ödön","key":"KL_szemely_0211","nymRef":"Palasovszky Ödön","idnos":[]},"KL_szemely_0117":{"name":"Hevesy Iván","key":"KL_szemely_0117","nymRef":"Hevesy Iván","idnos":[]},"KL_szemely_0200":{"name":"Nagy Andor","key":"KL_szemely_0200","nymRef":"Nagy Andor","idnos":[]},"KL_szemely_0120":{"name":"Ignotus Pál","key":"KL_szemely_0120","nymRef":"Ignotus Pál","idnos":[]},"KL_szemely_0046":{"name":"Dénes Zsófia","key":"KL_szemely_0046","nymRef":"Dénes Zsófia","idnos":[]},"KL_szemely_0002":{"name":"Aczél Benő","key":"KL_szemely_0002","nymRef":"Aczél Benő","idnos":[]},"KL_szemely_0266":{"name":"Hans Suschny","key":"KL_szemely_0266","nymRef":"Hans Suschny","idnos":[]},"KL_szemely_0279":{"name":"Ismeretlen","key":"KL_szemely_0279","nymRef":"Ismeretlen","idnos":[]},"KL_szemely_0277":{"name":"Ismeretlen","key":"KL_szemely_0277","nymRef":"Ismeretlen","idnos":[]},"KOHA_121317":{"name":"Osvát Ernő","key":"KOHA_121317","nymRef":"Osvát Ernő","idnos":[]},"KOHA_136423":{"name":"Heltai Jenő","key":"KOHA_136423","nymRef":"Heltai Jenő","idnos":[]},"KL_szemely_0256":{"name":"Simon Jolán","key":"KL_szemely_0256","nymRef":"Simon Jolán","idnos":[]}},"places":{},"orgs":{"KL_periodika_0044":{"name":"Ma","key":"KL_periodika_0044","nymRef":"Ma","pimId":"","refs":[]},"KL_periodika_0017":{"name":"Esti Kurir","key":"KL_periodika_0017","nymRef":"Esti Kurir","pimId":"","refs":[]},"KL_periodika_0002":{"name":"365","key":"KL_periodika_0002","nymRef":"365","pimId":"","refs":[]},"KL_periodika_0051":{"name":"Népszava","key":"KL_periodika_0051","nymRef":"Népszava","pimId":"","refs":[]}},"works":{"KL_mucim_0198":{"name":"Relief","key":"KL_mucim_0198","author":"Kassák Lajos","type":"primary-literature","subtype":"fine-art-work"},"KL_mucim_1344":{"name":"Manifest","key":"KL_mucim_1344","author":"Hans Suschny","type":"primary-literature","subtype":"literary-work"},"KL_mucim_0118":{"name":"Egy ember élete","key":"KL_mucim_0118","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{"KL_esemeny_0074":{"name":"Zöld Szamár Színház ","key":"KL_esemeny_0074","when":"1925-03-25","from":"","to":"","corresp":"Palasovszky Ödön"},"KL_esemeny_0003":{"name":"Simon Jolán előadása","key":"KL_esemeny_0003","when":"1925-04-03","from":"","to":"","corresp":"Simon Jolán"}}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -537,17 +552,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -556,6 +566,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -590,6 +616,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 

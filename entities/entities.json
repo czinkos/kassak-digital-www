@@ -1,0 +1,1092 @@
+{
+  "KL_esemeny_0001": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bárdos Artúr</p><p>Rendezés dátuma: 1919</p><p>Rendezés helye: Belvárosi Színház</p></div>",
+    "id": "KL_esemeny_0001",
+    "metadata": {
+      "title": "Szigligeti Ede: Rózsa",
+      "type": "esemény"
+    },
+    "name": "Szigligeti Ede: Rózsa",
+    "type": "esemény"
+  },
+  "KL_esemeny_0002": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Hevesy Iván</p><p>Rendezés dátuma: 1924-01-23 00:00:00</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0002",
+    "metadata": {
+      "title": "Hevesy Iván művészettörténeti szemináriuma",
+      "type": "esemény"
+    },
+    "name": "Hevesy Iván művészettörténeti szemináriuma",
+    "type": "esemény"
+  },
+  "KL_esemeny_0003": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1925-04-03 00:00:00</p><p>Rendezés helye: Budapest, VII. kerület, Dob utca 88., a Kossuth-Párt helyisége</p></div>",
+    "id": "KL_esemeny_0003",
+    "metadata": {
+      "title": "Simon Jolán előadása",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0004": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Palasovszky Ödön</p><p>Rendezés dátuma: 1925-04-02 00:00:00</p><p>Rendezés helye: Művész színpad</p></div>",
+    "id": "KL_esemeny_0004",
+    "metadata": {
+      "title": "A Zöld Szamár második előadása",
+      "type": "esemény"
+    },
+    "name": "A Zöld Szamár második előadása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0005": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Komlós Aladár</p><p>Rendezés dátuma: 1926</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0005",
+    "metadata": {
+      "title": "Komlós Aladár előadás-sorozata az új irodalomról",
+      "type": "esemény"
+    },
+    "name": "Komlós Aladár előadás-sorozata az új irodalomról",
+    "type": "esemény"
+  },
+  "KL_esemeny_0006": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-03-05 00:00:00</p></div>",
+    "id": "KL_esemeny_0006",
+    "metadata": {
+      "title": "Betiltott előadás a frankhamisítási botrányról",
+      "type": "esemény"
+    },
+    "name": "Betiltott előadás a frankhamisítási botrányról",
+    "type": "esemény"
+  },
+  "KL_esemeny_0007": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1926-05-19 00:00:00</p></div>",
+    "id": "KL_esemeny_0007",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0008": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0008",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0009": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-12-11 00:00:00</p><p>Rendezés helye: Szlovák Nemzeti Színház</p></div>",
+    "id": "KL_esemeny_0009",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0010": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0010",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0011": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Barta Lajos</p></div>",
+    "id": "KL_esemeny_0011",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0012": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés helye: Bécs</p></div>",
+    "id": "KL_esemeny_0012",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0013": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1923-09-28 00:00:00</p><p>Rendezés helye: Budapest, Eskü tér 5.  (ma Március 15. tér)</p></div>",
+    "id": "KL_esemeny_0013",
+    "metadata": {
+      "title": "Simon Jolán előadása",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0014": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: [1919. január]</p><p>Rendezés helye: Ernst Múzeum</p></div>",
+    "id": "KL_esemeny_0014",
+    "metadata": {
+      "title": "A Nyolcak csoportkiállítása",
+      "type": "esemény"
+    },
+    "name": "A Nyolcak csoportkiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0015": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Uitz Béla, Mattis-Teutsch János</p><p>Rendezés dátuma: [1923/1924]</p></div>",
+    "id": "KL_esemeny_0015",
+    "metadata": {
+      "title": "A Kékmadár tervezett kiállítása",
+      "type": "esemény"
+    },
+    "name": "A Kékmadár tervezett kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0016": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: [1924-04-20]</p><p>Rendezés helye: [Bécs?]</p></div>",
+    "id": "KL_esemeny_0016",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0017": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: [1924-04-27]</p><p>Rendezés helye: Berlin, Galerie Der Sturm</p></div>",
+    "id": "KL_esemeny_0017",
+    "metadata": {
+      "title": "Kassák Lajos és Nikolaus Braun kiállítása",
+      "type": "esemény"
+    },
+    "name": "Kassák Lajos és Nikolaus Braun kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0018": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: [1924. február 6-tól 26-ig]</p><p>Rendezés helye: Bécs, Galerie Würthle</p></div>",
+    "id": "KL_esemeny_0018",
+    "metadata": {
+      "title": "Kassák Lajos első bécsi kiállítása",
+      "type": "esemény"
+    },
+    "name": "Kassák Lajos első bécsi kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0019": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Schöpflin Aladár</p><p>Rendezés dátuma: [1924]</p></div>",
+    "id": "KL_esemeny_0019",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0020": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1924-02-10 00:00:00</p><p>Rendezés helye: Budapest, VI. kerület, Király utca 52.</p></div>",
+    "id": "KL_esemeny_0020",
+    "metadata": {
+      "title": "Simon Jolán előadóestje Tamás Aladár bevezetőjével",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadóestje Tamás Aladár bevezetőjével",
+    "type": "esemény"
+  },
+  "KL_esemeny_0021": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: [1925. március]</p><p>Rendezés helye: Bécs, Volkstheater</p></div>",
+    "id": "KL_esemeny_0021",
+    "metadata": {
+      "title": "George Bernard Shaw: Die Heilige Johanna",
+      "type": "esemény"
+    },
+    "name": "George Bernard Shaw: Die Heilige Johanna",
+    "type": "esemény"
+  },
+  "KL_esemeny_0022": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: [1926-27]</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0022",
+    "metadata": {
+      "title": "Kassák tervezett kiállítása a Mentor Könyvesboltban",
+      "type": "esemény"
+    },
+    "name": "Kassák tervezett kiállítása a Mentor Könyvesboltban",
+    "type": "esemény"
+  },
+  "KL_esemeny_0023": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: nem valósult meg</p></div>",
+    "id": "KL_esemeny_0023",
+    "metadata": {
+      "title": "Bratislava",
+      "type": "esemény"
+    },
+    "name": "Bratislava",
+    "type": "esemény"
+  },
+  "KL_esemeny_0024": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1914-01-05 00:00:00</p><p>Rendezés helye: Innsbruck</p></div>",
+    "id": "KL_esemeny_0024",
+    "metadata": {
+      "title": "Friedrich Schiller: Stuart Mária",
+      "type": "esemény"
+    },
+    "name": "Friedrich Schiller: Stuart Mária",
+    "type": "esemény"
+  },
+  "KL_esemeny_0025": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bárdos Arthúr</p><p>Rendezés dátuma: 1919 március</p><p>Rendezés helye: Belvárosi Színház</p></div>",
+    "id": "KL_esemeny_0025",
+    "metadata": {
+      "title": "Wayang játékok",
+      "type": "esemény"
+    },
+    "name": "Wayang játékok",
+    "type": "esemény"
+  },
+  "KL_esemeny_0026": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bárdos Arthúr</p><p>Rendezés dátuma: 1919-05-17 (bemutató)</p><p>Rendezés helye: Belvárosi Színház</p></div>",
+    "id": "KL_esemeny_0026",
+    "metadata": {
+      "title": "Szent Antal csodája",
+      "type": "esemény"
+    },
+    "name": "Szent Antal csodája",
+    "type": "esemény"
+  },
+  "KL_esemeny_0027": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1920-02-15 00:00:00</p><p>Rendezés helye: Madách Színház</p></div>",
+    "id": "KL_esemeny_0027",
+    "metadata": {
+      "title": "A Madách Színház Strindberg-matinéja",
+      "type": "esemény"
+    },
+    "name": "A Madách Színház Strindberg-matinéja",
+    "type": "esemény"
+  },
+  "KL_esemeny_0028": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bokor József</p><p>Rendezés dátuma: 1921. február</p><p>Rendezés helye: Király Színház</p></div>",
+    "id": "KL_esemeny_0028",
+    "metadata": {
+      "title": "János vitéz",
+      "type": "esemény"
+    },
+    "name": "János vitéz",
+    "type": "esemény"
+  },
+  "KL_esemeny_0029": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Nádor Mihály, Faragó Jenő</p><p>Rendezés dátuma: 1921-02-[19]</p><p>Rendezés helye: Király Színház</p></div>",
+    "id": "KL_esemeny_0029",
+    "metadata": {
+      "title": "Offenbach",
+      "type": "esemény"
+    },
+    "name": "Offenbach",
+    "type": "esemény"
+  },
+  "KL_esemeny_0030": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Mácza János</p><p>Rendezés dátuma: 1922-05-01 00:00:00</p><p>Rendezés helye: Kassa</p></div>",
+    "id": "KL_esemeny_0030",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0031": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1923-11-04 00:00:00</p><p>Rendezés helye: Vigadó Nagyterem</p></div>",
+    "id": "KL_esemeny_0031",
+    "metadata": {
+      "title": "Kékmadár matiné",
+      "type": "esemény"
+    },
+    "name": "Kékmadár matiné",
+    "type": "esemény"
+  },
+  "KL_esemeny_0032": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1923-09-28 00:00:00</p><p>Rendezés helye: Magántisztviselők Szövetségének helyisége</p></div>",
+    "id": "KL_esemeny_0032",
+    "metadata": {
+      "title": "Irodalmi est",
+      "type": "esemény"
+    },
+    "name": "Irodalmi est",
+    "type": "esemény"
+  },
+  "KL_esemeny_0033": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Scheiber Hugó</p><p>Rendezés dátuma: 1924 [január]</p><p>Rendezés helye: Alkotás Művészház</p></div>",
+    "id": "KL_esemeny_0033",
+    "metadata": {
+      "title": "Scheiber Hugó gyűjteményes kiállítása",
+      "type": "esemény"
+    },
+    "name": "Scheiber Hugó gyűjteményes kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0034": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Szabó Dezső</p><p>Rendezés dátuma: 1924. február és március</p></div>",
+    "id": "KL_esemeny_0034",
+    "metadata": {
+      "title": "Szabó Dezső előadása",
+      "type": "esemény"
+    },
+    "name": "Szabó Dezső előadása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0035": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1924-02-10 00:00:00</p><p>Rendezés helye: Király utca 52</p></div>",
+    "id": "KL_esemeny_0035",
+    "metadata": {
+      "title": "Simon Jolán előadóestje",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0036": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Innocent Ernő és Rákai András</p><p>Rendezés dátuma: 1924. június 28</p><p>Rendezés helye: Margitsziget</p></div>",
+    "id": "KL_esemeny_0036",
+    "metadata": {
+      "title": "Walter Hasenclever: Antigoné",
+      "type": "esemény"
+    },
+    "name": "Walter Hasenclever: Antigoné",
+    "type": "esemény"
+  },
+  "KL_esemeny_0037": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925. március 6.</p></div>",
+    "id": "KL_esemeny_0037",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0038": {
+    "html": "<div class=\"entity-div\"><p>Rendező: MSzDP</p><p>Rendezés dátuma: 1925-12-25–26–27</p><p>Rendezés helye: Budapest</p></div>",
+    "id": "KL_esemeny_0038",
+    "metadata": {
+      "title": "Az MSzDP 1925. évi XXIII. kongresszusa",
+      "type": "esemény"
+    },
+    "name": "Az MSzDP 1925. évi XXIII. kongresszusa",
+    "type": "esemény"
+  },
+  "KL_esemeny_0039": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1925-04-03 00:00:00</p><p>Rendezés helye: A VII. kerületi Kossuth Párt nagyterme (VII. Dob utca 88).</p></div>",
+    "id": "KL_esemeny_0039",
+    "metadata": {
+      "title": "Simon Jolán előadása az új művészet magyar és külföldi reprezentánsaiból",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadása az új művészet magyar és külföldi reprezentánsaiból",
+    "type": "esemény"
+  },
+  "KL_esemeny_0040": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925-08-02 00:00:00</p><p>Rendezés helye: Szatmár, Cecil-egylet</p></div>",
+    "id": "KL_esemeny_0040",
+    "metadata": {
+      "title": "Művészestély",
+      "type": "esemény"
+    },
+    "name": "Művészestély",
+    "type": "esemény"
+  },
+  "KL_esemeny_0041": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bortnyik Sándor</p><p>Rendezés dátuma: 1925. február és március</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0041",
+    "metadata": {
+      "title": "Bortnyik Sándor kiállítása",
+      "type": "esemény"
+    },
+    "name": "Bortnyik Sándor kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0042": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán, Szabados Piroska, Kadosa Pál, Hont Ferenc</p><p>Rendezés dátuma: 1925-05-31-re tervezve: valószínűleg nem valósult meg</p></div>",
+    "id": "KL_esemeny_0042",
+    "metadata": {
+      "title": "A 365 tervezett szavalóestje",
+      "type": "esemény"
+    },
+    "name": "A 365 tervezett szavalóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0043": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1925-03-01 00:00:00</p><p>Rendezés helye: Kamarazene-terem (IV. Molnár utca 11. szám)</p></div>",
+    "id": "KL_esemeny_0043",
+    "metadata": {
+      "title": "A XX. pártszervezet II. irodalmi délutánja",
+      "type": "esemény"
+    },
+    "name": "A XX. pártszervezet II. irodalmi délutánja",
+    "type": "esemény"
+  },
+  "KL_esemeny_0044": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Raith Tivadar</p><p>Rendezés dátuma: 1925-03-01 00:00:00</p><p>Rendezés helye: Zeneakadémia, kamaraterem</p><p>Szakirodalmi forrás: A Népszava 1925. február 22-i számában a 10. oldalon reklámozza</p></div>",
+    "id": "KL_esemeny_0044",
+    "metadata": {
+      "title": "Új magyar líra",
+      "type": "esemény"
+    },
+    "name": "Új magyar líra",
+    "type": "esemény"
+  },
+  "KL_esemeny_0045": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: 1925-03-22 00:00:00</p><p>Rendezés helye: Schwarzwaldsaal</p></div>",
+    "id": "KL_esemeny_0045",
+    "metadata": {
+      "title": "A Ma előadóestje",
+      "type": "esemény"
+    },
+    "name": "A Ma előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0046": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Molnár Farkas</p><p>Rendezés dátuma: 1925-03-22–1925-03-18</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0046",
+    "metadata": {
+      "title": "Molnár Farkas építészeti munkái (kiállítás)",
+      "type": "esemény"
+    },
+    "name": "Molnár Farkas építészeti munkái (kiállítás)",
+    "type": "esemény"
+  },
+  "KL_esemeny_0047": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925-03-23 00:00:00</p></div>",
+    "id": "KL_esemeny_0047",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0048": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Ascher Oszkár, Holló Klára</p><p>Rendezés dátuma: 1925-11-29 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0048",
+    "metadata": {
+      "title": "Ascher Oszkár és Holló Klára előadóestje",
+      "type": "esemény"
+    },
+    "name": "Ascher Oszkár és Holló Klára előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0049": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bokros Birman Dezső</p><p>Rendezés dátuma: 1925-09-23–1925-10-11</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0049",
+    "metadata": {
+      "title": "Bokros Birman-kiállítás",
+      "type": "esemény"
+    },
+    "name": "Bokros Birman-kiállítás",
+    "type": "esemény"
+  },
+  "KL_esemeny_0050": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Charlie Chaplin</p><p>Rendezés dátuma: 1926-02-23 után</p></div>",
+    "id": "KL_esemeny_0050",
+    "metadata": {
+      "title": "Aranyláz",
+      "type": "esemény"
+    },
+    "name": "Aranyláz",
+    "type": "esemény"
+  },
+  "KL_esemeny_0051": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: 1926-05-08 00:00:00</p><p>Rendezés helye: Bécs, Schwarzwaldsaal</p></div>",
+    "id": "KL_esemeny_0051",
+    "metadata": {
+      "title": "Ma-est Bécsben: Gruppe Ma – Zeitschrift Ma – Konstruktive Kunst",
+      "type": "esemény"
+    },
+    "name": "Ma-est Bécsben: Gruppe Ma – Zeitschrift Ma – Konstruktive Kunst",
+    "type": "esemény"
+  },
+  "KL_esemeny_0052": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Szőke Kálmán</p><p>Rendezés dátuma: 1926-04-23 00:00:00</p><p>Rendezés helye: Renaissance Színház</p></div>",
+    "id": "KL_esemeny_0052",
+    "metadata": {
+      "title": "Az öngyilkos élete",
+      "type": "esemény"
+    },
+    "name": "Az öngyilkos élete",
+    "type": "esemény"
+  },
+  "KL_esemeny_0053": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: 1926-06-14 00:00:00</p><p>Rendezés helye: Párizs, Société  des  Savants</p></div>",
+    "id": "KL_esemeny_0053",
+    "metadata": {
+      "title": "A Ma párizsi előadóestje",
+      "type": "esemény"
+    },
+    "name": "A Ma párizsi előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0054": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1926-06-04 00:00:00</p><p>Rendezés helye: Mentor Könyvesbolt</p></div>",
+    "id": "KL_esemeny_0054",
+    "metadata": {
+      "title": "Simon Jolán előadó estje",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadó estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0055": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-05-12 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0055",
+    "metadata": {
+      "title": "Öt világrész költészete: Az Új föld előadóestélye",
+      "type": "esemény"
+    },
+    "name": "Öt világrész költészete: Az Új föld előadóestélye",
+    "type": "esemény"
+  },
+  "KL_esemeny_0056": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Komlós Aladár</p><p>Rendezés dátuma: 1926-05-04 00:00:00</p><p>Rendezés helye: Budapest</p></div>",
+    "id": "KL_esemeny_0056",
+    "metadata": {
+      "title": "Komlós Aladár előadása az új magyar irodalomról",
+      "type": "esemény"
+    },
+    "name": "Komlós Aladár előadása az új magyar irodalomról",
+    "type": "esemény"
+  },
+  "KL_esemeny_0057": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Fényes Samu</p><p>Rendezés dátuma: 1926-11-04 00:00:00</p><p>Rendezés helye: Pozsony, Prímás Palota különterme</p></div>",
+    "id": "KL_esemeny_0057",
+    "metadata": {
+      "title": "Fényes Samu pozsonyi szerzői estje",
+      "type": "esemény"
+    },
+    "name": "Fényes Samu pozsonyi szerzői estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0058": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: 1927-03-05 00:00:00</p><p>Rendezés helye: Budapest, Zeneművészeti   Főiskola</p></div>",
+    "id": "KL_esemeny_0058",
+    "metadata": {
+      "title": "Dokumentum-estély",
+      "type": "esemény"
+    },
+    "name": "Dokumentum-estély",
+    "type": "esemény"
+  },
+  "KL_esemeny_0060": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1927. október/november</p><p>Rendezés helye: Wrocław (Breslau)</p></div>",
+    "id": "KL_esemeny_0060",
+    "metadata": {
+      "title": "Der Arbeit Heiliger Krieg",
+      "type": "esemény"
+    },
+    "name": "Der Arbeit Heiliger Krieg",
+    "type": "esemény"
+  },
+  "KL_esemeny_0061": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Rote Fahne</p><p>Rendezés dátuma: 1928 ősz</p><p>Rendezés helye: Bécs</p></div>",
+    "id": "KL_esemeny_0061",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0062": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Lábán Rudolf</p><p>Rendezés dátuma: 1928-10-30 00:00:00</p><p>Rendezés helye: Bécs, Urania</p></div>",
+    "id": "KL_esemeny_0062",
+    "metadata": {
+      "title": "Die Probleme der neuen Tanzkunst",
+      "type": "esemény"
+    },
+    "name": "Die Probleme der neuen Tanzkunst",
+    "type": "esemény"
+  },
+  "KL_esemeny_0063": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Heimwehr, Republikanischer Schutzbund</p><p>Rendezés dátuma: 1928-10-07 00:00:00</p><p>Rendezés helye: Bécs</p></div>",
+    "id": "KL_esemeny_0063",
+    "metadata": {
+      "title": "Aufmarsch der Heimwehr und des Schutzbundes in Wiener Neustadt",
+      "type": "esemény"
+    },
+    "name": "Aufmarsch der Heimwehr und des Schutzbundes in Wiener Neustadt",
+    "type": "esemény"
+  },
+  "KL_esemeny_0064": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: Nem valósult meg</p></div>",
+    "id": "KL_esemeny_0064",
+    "metadata": {
+      "title": "A Ma-kör tervezett romániai körútja",
+      "type": "esemény"
+    },
+    "name": "A Ma-kör tervezett romániai körútja",
+    "type": "esemény"
+  },
+  "KL_esemeny_0065": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Komlós Aladár</p><p>Rendezés dátuma: [1925-05-05]</p><p>Rendezés helye: Mentor könyvesbolt</p></div>",
+    "id": "KL_esemeny_0065",
+    "metadata": {
+      "title": "Előadás az új magyar líráról",
+      "type": "esemény"
+    },
+    "name": "Előadás az új magyar líráról",
+    "type": "esemény"
+  },
+  "KL_esemeny_0066": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Ismeretlen</p></div>",
+    "id": "KL_esemeny_0066",
+    "metadata": {
+      "title": "Tervezett Reneszánsz-matiné",
+      "type": "esemény"
+    },
+    "name": "Tervezett Reneszánsz-matiné",
+    "type": "esemény"
+  },
+  "KL_esemeny_0068": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Diener-Dénes Rezső (Rudolf)</p><p>Rendezés dátuma: 1924-03-16–1924-03-30</p><p>Rendezés helye: Budapest, Belvedere Szalon</p></div>",
+    "id": "KL_esemeny_0068",
+    "metadata": {
+      "title": "Diener-Dénes Rezső gyűjteményes kiállítása",
+      "type": "esemény"
+    },
+    "name": "Diener-Dénes Rezső gyűjteményes kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0069": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0069",
+    "metadata": {
+      "title": "Kassák Lajos tervezett kiállítása",
+      "type": "esemény"
+    },
+    "name": "Kassák Lajos tervezett kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0070": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-04-17 00:00:00</p><p>Rendezés helye: Bécs</p></div>",
+    "id": "KL_esemeny_0070",
+    "metadata": {
+      "title": "Németh Andor szerzői estje",
+      "type": "esemény"
+    },
+    "name": "Németh Andor szerzői estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0071": {
+    "html": "<div class=\"entity-div\"><p>Rendezés helye: Hamlet halála cím alatt nem futott előadás Budapesten. A Belvárosi Színházban a Hamlet házasága című előadást 1926. február 11-én mutatták be. 1925-ben a Renaissance is játszott Hamletet, a bemutató 1925. szeptember 26-án volt.</p></div>",
+    "id": "KL_esemeny_0071",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0072": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Tamás Aladár</p><p>Rendezés dátuma: 1926-03-28 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0072",
+    "metadata": {
+      "title": "Francia költők előadóestje",
+      "type": "esemény"
+    },
+    "name": "Francia költők előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0073": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925-03-01 00:00:00</p><p>Rendezés helye: Zeneakadámia</p></div>",
+    "id": "KL_esemeny_0073",
+    "metadata": {
+      "title": "A Magyar írás új lírai estje",
+      "type": "esemény"
+    },
+    "name": "A Magyar írás új lírai estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0074": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925-03-25 00:00:00</p><p>Rendezés helye: Művész Színpad</p></div>",
+    "id": "KL_esemeny_0074",
+    "metadata": {
+      "title": "Zöld Szamár Színház",
+      "type": "esemény"
+    },
+    "name": "Zöld Szamár Színház",
+    "type": "esemény"
+  },
+  "KL_esemeny_0076": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0076",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0077": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0077",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0079": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kovács Kálmán</p><p>Rendezés dátuma: 1926-03-22 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0079",
+    "metadata": {
+      "title": "Kovács Kálmán szerzői estje",
+      "type": "esemény"
+    },
+    "name": "Kovács Kálmán szerzői estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0080": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0080",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0081": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0081",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0082": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0082",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0083": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0083",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0084": {
+    "html": "<div class=\"entity-div\"></div>",
+    "id": "KL_esemeny_0084",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0085": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: Valószínűleg nem valósult meg</p><p>Rendezés helye: Kassa</p></div>",
+    "id": "KL_esemeny_0085",
+    "metadata": {
+      "title": "Kassák tervezett előadói estje Kassán",
+      "type": "esemény"
+    },
+    "name": "Kassák tervezett előadói estje Kassán",
+    "type": "esemény"
+  },
+  "KL_esemeny_0086": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: Valószínűleg nem valósult meg</p><p>Rendezés helye: Pozsony</p></div>",
+    "id": "KL_esemeny_0086",
+    "metadata": {
+      "title": "Kassák tervezett előadói estje Pozsonyban",
+      "type": "esemény"
+    },
+    "name": "Kassák tervezett előadói estje Pozsonyban",
+    "type": "esemény"
+  },
+  "KL_esemeny_0087": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés helye: Bécs</p></div>",
+    "id": "KL_esemeny_0087",
+    "metadata": {
+      "title": "Simon Jolán tervezett előadói estje Bécsben",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán tervezett előadói estje Bécsben",
+    "type": "esemény"
+  },
+  "KL_esemeny_0088": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán és Kassák Lajos</p><p>Rendezés dátuma: 1922-03-19 00:00:00</p><p>Rendezés helye: Kassa, \"városi zenede\"</p></div>",
+    "id": "KL_esemeny_0088",
+    "metadata": {
+      "title": "Simon Jolán és Kassák Lajos előadói estje Kassán",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán és Kassák Lajos előadói estje Kassán",
+    "type": "esemény"
+  },
+  "KL_esemeny_0089": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Simon Jolán</p><p>Rendezés dátuma: 1922. tavasz</p><p>Rendezés helye: Csehszlovákia</p></div>",
+    "id": "KL_esemeny_0089",
+    "metadata": {
+      "title": "Simon Jolán előadókörútja Csehszlovákiában",
+      "type": "esemény"
+    },
+    "name": "Simon Jolán előadókörútja Csehszlovákiában",
+    "type": "esemény"
+  },
+  "KL_esemeny_0090": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos</p><p>Rendezés dátuma: 1921-10-16 00:00:00</p><p>Rendezés helye: Bécs, Konzerthaus</p></div>",
+    "id": "KL_esemeny_0090",
+    "metadata": {
+      "title": "A Ma harmadik bécsi előadóestje",
+      "type": "esemény"
+    },
+    "name": "A Ma harmadik bécsi előadóestje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0091": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Uitz Béla, Kassák Lajos</p><p>Rendezés dátuma: 1920-11-01 00:00:00</p><p>Rendezés helye: Bécs, a Freie Bewegung belvárosi helyisége (Kärntnerstraße 4.)</p></div>",
+    "id": "KL_esemeny_0091",
+    "metadata": {
+      "title": "A MA 10. kiállítása. Uitz Béla művei",
+      "type": "esemény"
+    },
+    "name": "A MA 10. kiállítása. Uitz Béla művei",
+    "type": "esemény"
+  },
+  "KL_esemeny_0092": {
+    "html": "<div class=\"entity-div\"><p>Rendező: A Tvrdošíjní csoport (amelyhez Uitz Béla és Kudlák Lajos is csatlakozott)</p><p>Rendezés dátuma: 1921 május</p><p>Rendezés helye: Kassa, Kelet Szlovákiak Múzeum</p></div>",
+    "id": "KL_esemeny_0092",
+    "metadata": {
+      "title": "A Tvrdošíjní csoport kiállítása",
+      "type": "esemény"
+    },
+    "name": "A Tvrdošíjní csoport kiállítása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0093": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Kassák Lajos és a Ma-csoport tagjai</p><p>Rendezés dátuma: 1920-11-13–1920-11-20</p><p>Rendezés helye: Bécs, Konzerthaus</p></div>",
+    "id": "KL_esemeny_0093",
+    "metadata": {
+      "title": "Ma-matiné",
+      "type": "esemény"
+    },
+    "name": "Ma-matiné",
+    "type": "esemény"
+  },
+  "KL_esemeny_0094": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Theo van Doesburg</p><p>Rendezés dátuma: 1922. szeptember 25–26</p><p>Rendezés helye: Weimar</p></div>",
+    "id": "KL_esemeny_0094",
+    "metadata": {
+      "title": "A Konstruktivisták és Dadaisták első nemzetközi Kongresszusa (Der Internationale Kongress der Konstruktivisten und Dadaisten in Weimar)",
+      "type": "esemény"
+    },
+    "name": "A Konstruktivisták és Dadaisták első nemzetközi Kongresszusa (Der Internationale Kongress der Konstruktivisten und Dadaisten in Weimar)",
+    "type": "esemény"
+  },
+  "KL_esemeny_0095": {
+    "html": "<div class=\"entity-div\"><p>Rendező: André Breton</p><p>Rendezés dátuma: 1922. március (ekkorra tervezték, de végül nem valósult meg)</p></div>",
+    "id": "KL_esemeny_0095",
+    "metadata": {
+      "title": "Congrès international pour la détermination des directives et la défense de l’Esprit Moderne",
+      "type": "esemény"
+    },
+    "name": "Congrès international pour la détermination des directives et la défense de l’Esprit Moderne",
+    "type": "esemény"
+  },
+  "KL_esemeny_0096": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925. tavasz-nyár</p><p>Rendezés helye: régi Műcsarnok (Olof Palme ház)</p></div>",
+    "id": "KL_esemeny_0096",
+    "metadata": {
+      "title": "Színpadművészeti kiállítás (Az Iparművészeti Társulat jubiláns kiállítása)",
+      "type": "esemény"
+    },
+    "name": "Színpadművészeti kiállítás (Az Iparművészeti Társulat jubiláns kiállítása)",
+    "type": "esemény"
+  },
+  "KL_esemeny_0097": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Tamás Aladár</p><p>Rendezés dátuma: 1925-12-01 00:00:00</p></div>",
+    "id": "KL_esemeny_0097",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0098": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Tamás Aladár</p><p>Rendezés dátuma: 1925-12-01 00:00:00</p><p>Rendezés helye: Ismeretlen</p></div>",
+    "id": "KL_esemeny_0098",
+    "metadata": {
+      "title": "Ismeretlen",
+      "type": "esemény"
+    },
+    "name": "Ismeretlen",
+    "type": "esemény"
+  },
+  "KL_esemeny_0099": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Tamás Aladár és Simon Jolán</p><p>Rendezés dátuma: 1925-12-01 00:00:00</p></div>",
+    "id": "KL_esemeny_0099",
+    "metadata": {
+      "title": "Nem jött létre",
+      "type": "esemény"
+    },
+    "name": "Nem jött létre",
+    "type": "esemény"
+  },
+  "KL_esemeny_0100": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Bárdos Artúr</p><p>Rendezés dátuma: 1920-02-13 00:00:00</p><p>Rendezés helye: Belvárosi Színház</p></div>",
+    "id": "KL_esemeny_0100",
+    "metadata": {
+      "title": "Szép Ernő Patika című darabjának a bemutatója",
+      "type": "esemény"
+    },
+    "name": "Szép Ernő Patika című darabjának a bemutatója",
+    "type": "esemény"
+  },
+  "KL_esemeny_0101": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Jób Dániel</p><p>Rendezés dátuma: 1920-02-14 00:00:00</p><p>Rendezés helye: Vígszínház</p></div>",
+    "id": "KL_esemeny_0101",
+    "metadata": {
+      "title": "Rutkay György A nagyvilági nő című darabjának a bemutatója",
+      "type": "esemény"
+    },
+    "name": "Rutkay György A nagyvilági nő című darabjának a bemutatója",
+    "type": "esemény"
+  },
+  "KL_esemeny_0102": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1924-01-26 00:00:00</p><p>Rendezés helye: Az MSzDP XX. pártszervezete</p></div>",
+    "id": "KL_esemeny_0102",
+    "metadata": {
+      "title": "Modern irodalmi est",
+      "type": "esemény"
+    },
+    "name": "Modern irodalmi est",
+    "type": "esemény"
+  },
+  "KL_esemeny_0103": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Szőke Kálmán</p><p>Rendezés dátuma: 1926-01-30 00:00:00</p><p>Rendezés helye: Renessaince Színház</p></div>",
+    "id": "KL_esemeny_0103",
+    "metadata": {
+      "title": "A fejedelem előadása",
+      "type": "esemény"
+    },
+    "name": "A fejedelem előadása",
+    "type": "esemény"
+  },
+  "KL_esemeny_0104": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Palasovszky Ödön, Tamás Aladár</p><p>Rendezés dátuma: 1926–1927</p><p>Rendezés helye: Budapest</p><p>Szakirodalmi forrás: Tóth Dénes. „Palasovszky Ödön experimentális korszaka”. Iskolakultúra 6, 8. sz. (1996): 71–76.</p></div>",
+    "id": "KL_esemeny_0104",
+    "metadata": {
+      "title": "Új Föld-estek",
+      "type": "esemény"
+    },
+    "name": "Új Föld-estek",
+    "type": "esemény"
+  },
+  "KL_esemeny_0105": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-04-10 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0105",
+    "metadata": {
+      "title": "A Vajda János Társaság művészeti estje",
+      "type": "esemény"
+    },
+    "name": "A Vajda János Társaság művészeti estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0106": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-04-10 00:00:00</p><p>Rendezés helye: Zeneakadémia</p></div>",
+    "id": "KL_esemeny_0106",
+    "metadata": {
+      "title": "A Nyugat Tersánszky-estje",
+      "type": "esemény"
+    },
+    "name": "A Nyugat Tersánszky-estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0107": {
+    "html": "<div class=\"entity-div\"><p>Rendező: Palasovszky Ödön, Tamás Aladár</p></div>",
+    "id": "KL_esemeny_0107",
+    "metadata": {
+      "title": "Az Új Föld első estje",
+      "type": "esemény"
+    },
+    "name": "Az Új Föld első estje",
+    "type": "esemény"
+  },
+  "KL_esemeny_0108": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926-05-22–23.</p><p>Rendezés helye: Szeged</p></div>",
+    "id": "KL_esemeny_0108",
+    "metadata": {
+      "title": "A magyarországi munkásdalegyletek országos dalosünnepe",
+      "type": "esemény"
+    },
+    "name": "A magyarországi munkásdalegyletek országos dalosünnepe",
+    "type": "esemény"
+  },
+  "KL_esemeny_0109": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1926. május</p><p>Rendezés helye: Budapest</p></div>",
+    "id": "KL_esemeny_0109",
+    "metadata": {
+      "title": "Országos Embervédelmi Kiállítás",
+      "type": "esemény"
+    },
+    "name": "Országos Embervédelmi Kiállítás",
+    "type": "esemény"
+  },
+  "KL_esemeny_0110": {
+    "html": "<div class=\"entity-div\"><p>Rendezés dátuma: 1925-03-01 00:00:00</p><p>Rendezés helye: Az MSzDP XX. pártszervezete</p></div>",
+    "id": "KL_esemeny_0110",
+    "metadata": {
+      "title": "A szociáldemokraták XX. pártszervezetének második irodalmi délutánja",
+      "type": "esemény"
+    },
+    "name": "A szociáldemokraták XX. pártszervezetének második irodalmi délutánja",
+    "type": "esemény"
+  },
+  "KL_mucim_0006": {
+    "html": "<div class=\"entity-div\"><p>Szerző: Kassák Lajos</p><p>OSZK Nektár azonosító: 2990410</p><p>Kötetcím: Új versek</p><p>Kiadás helye, ideje: Bécs: Írók Könyvtára, 1923.</p></div>",
+    "id": "KL_mucim_0006",
+    "metadata": {
+      "title": "39",
+      "type": "műcím"
+    },
+    "name": "39",
+    "type": "műcím"
+  },
+  "KL_periodika_0002": {
+    "html": "<div class=\"entity-div\"><p>Kiadás helye: Budapest</p><p>Szerkesztő: Kassák Lajos, Tamás Aladár</p><p>Kiadvány ideje: 1925</p><p>Szakirodalmi forrás: Dobó Gábor, „Számok: A nyugati emigrációból Magyarországra visszatérő avantgárd lapszerkesztők adaptációs modelljei a 365-től a 100%-ig”, Irodalomtörténet 104, 4. sz. (2023): 168‒196.</p></div>",
+    "id": "KL_periodika_0002",
+    "metadata": {
+      "title": "365",
+      "type": "periodika"
+    },
+    "name": "365",
+    "type": "periodika"
+  },
+  "KL_szemely_0024": {
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: [?]–[?], a bécsi Ma propagandaestjeinek aktív szervezője, a versmondó kórus tagja volt. 1926-ban Kassák Lajossal, Nádass Józseffel és Gáspár Endrével Párizsba utazott. Az 1920-as évek végén kezdett fényképezéssel foglalkozni. 1932-ben részt vett a Munka-kör III. fotókiállításán és képeivel szerepel a Munka A mi életünkből című fotókönyvében.</p><p>Forrás: Albertini Béla, A magyar szociofotó története a kezdetektől a második világháború végéig, (Budapest: Magyar Fotográfiai Múzeum, 1997); Csaplár Ferenc, Kassák körei (Budapest: Szépirodalmi Kiadó 1987). </p></div>",
+    "id": "KL_szemely_0024",
+    "metadata": {
+      "title": "Bergmann Teréz",
+      "type": "személynév"
+    },
+    "name": "Bergmann Teréz",
+    "type": "személynév"
+  }
+}

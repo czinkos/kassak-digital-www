@@ -396,7 +396,22 @@
 window.ENTITY_DATA = {"persons":{"KL_szemely_0044":{"name":"Dékány András","key":"KL_szemely_0044","nymRef":"Dékány András","idnos":[]},"KL_szemely_0138":{"name":"Karly Ágost","key":"KL_szemely_0138","nymRef":"Karly Ágost","idnos":[]},"KL_szemely_0213":{"name":"Pán Imre","key":"KL_szemely_0213","nymRef":"Pán Imre","idnos":[]},"KL_szemely_0214":{"name":"Pápa József","key":"KL_szemely_0214","nymRef":"Pápa József","idnos":[]},"KL_szemely_0670":{"name":"Mezei Árpád","key":"KL_szemely_0670","nymRef":"Mezei Árpád","idnos":[]},"KL_szemely_0249":{"name":"Scheiber Hugó","key":"KL_szemely_0249","nymRef":"Scheiber Hugó","idnos":[]},"KOHA_136423":{"name":"Heltai Jenő","key":"KOHA_136423","nymRef":"Heltai Jenő","idnos":[]}},"places":{},"orgs":{"KL_periodika_0044":{"name":"Ma","key":"KL_periodika_0044","nymRef":"Ma","pimId":"","refs":[]},"KL_periodika_0068":{"name":"Nyugat","key":"KL_periodika_0068","nymRef":"Nyugat","pimId":"","refs":[]}},"works":{"KL_mucim_0118":{"name":"Egy ember élete","key":"KL_mucim_0118","author":"Kassák Lajos","type":"primary-literature","subtype":"literary-work"}},"events":{}};
 
 (function() {
-  document.addEventListener('click', function(e) {
+  let allEntities = null;
+  async function getEntityDescription(id) {
+    if (!allEntities) {
+      try {
+        const response = await fetch('../../entities/entities.json');
+        allEntities = await response.json();
+      } catch (err) {
+        console.error("Failed to load entities.json", err);
+        allEntities = {};
+      }
+    }
+    const entity = allEntities[id];
+    return entity ? entity.html : null;
+  }
+
+  document.addEventListener('click', async function(e) {
     const mention = e.target.closest('.entity-mention');
     if (!mention) return;
 
@@ -460,17 +475,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0044":{"name":"Dékány András","k
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
-        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
-        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
-        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
-        case 'events':  mutatoPath = '..&#x2f;../events.html'; break;
+        case 'persons': mutatoPath = '../../persons.html'; break;
+        case 'places':  mutatoPath = '../../places.html'; break;
+        case 'orgs':    mutatoPath = '../../organizations.html'; break;
+        case 'works':   mutatoPath = '../../works.html'; break;
+        case 'events':  mutatoPath = '../../events.html'; break;
     }
-
-    row.innerHTML = `
-      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
-      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
-    `;
 
     // Helper for URL generation
     function idnoUrl(type, id) {
@@ -479,6 +489,22 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0044":{"name":"Dékány András","k
             default:         return '';
         }
     }
+
+    const descriptionHtml = await getEntityDescription(id);
+    let descriptionSection = '';
+    if (descriptionHtml) {
+        descriptionSection = `
+            <div class="entity-description-text" style="margin-top: 0.25rem; padding-left: 1rem; border-left: 3px solid var(--color-gray-mid); clear: both;">
+                ${descriptionHtml}
+            </div>
+        `;
+    }
+
+    row.innerHTML = `
+      <strong>${entity.name}</strong>${linksHtml} [<a href="${mutatoPath}?id=${id}">mutató</a>]
+      <button class="close-btn" title="Bezárás" style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%);">×</button>
+      ${descriptionSection}
+    `;
 
     block.appendChild(row);
 
@@ -513,6 +539,12 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0044":{"name":"Dékány András","k
 }
 .entity-info-inline .close-btn:hover {
   color: var(--color-accent);
+}
+.entity-info-block summary::-webkit-details-marker {
+  display: none;
+}
+.entity-info-block summary {
+  list-style: none;
 }
 </style>
 
