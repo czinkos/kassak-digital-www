@@ -11820,7 +11820,7 @@
     "type": "személynév"
   },
   "KL_szemely_0103": {
-    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1886–1958, ügyvéd. A szociáldemokrata párt parlamenti frakciójának tagja.</p><p>PIM névtérben szereplő név: Györki Imre [Akkor honnan jött az Ernő ???]</p><p><a href=\"https://resolver.pim.hu/auth/PIM56874\" target=\"_blank\">PIM névtér link</a></p><p>Forrás: Csaplár Ferenc, „Kassák Lajos levelesládájából”, Uj Symposion 15, 165. sz. (1979): 7. </p></div>",
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1886–1958, ügyvéd. A szociáldemokrata párt parlamenti frakciójának tagja.</p><p><a href=\"https://resolver.pim.hu/auth/PIM56874\" target=\"_blank\">PIM névtér link</a></p><p>Forrás: Csaplár Ferenc, „Kassák Lajos levelesládájából”, Uj Symposion 15, 165. sz. (1979): 7. </p></div>",
     "id": "KL_szemely_0103",
     "metadata": {
       "title": "Györki Imre",
@@ -11880,7 +11880,7 @@
     "type": "személynév"
   },
   "KL_szemely_0109": {
-    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1901–1992, Báró Hatvany Lajos felesége.</p><p>PIM névtérben szereplő név: Marton Erzsébet</p><p>Forrás: SÁRA, itt a lengyel szöveg működik most már csak, a névazonosítás amúgy helyes. tudsz belőle ebbe a rovatba csinálni szakirodalmi hivatkozást? </p></div>",
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1901–1992, Báró Hatvany Lajos felesége.</p><p>PIM névtérben szereplő név: Marton Erzsébet</p></div>",
     "id": "KL_szemely_0109",
     "metadata": {
       "title": "Marton Erzsébet",
@@ -12210,7 +12210,7 @@
     "type": "személynév"
   },
   "KL_szemely_0142": {
-    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1868‒1929, gyáros. A Kaszab és Breuer-csavargyár alapítója. Ez a gyár Kassák Lajos egyik korábbi munkahelye volt.</p><p>PIM névtérben szereplő név: Kaszab Aladár</p><p><a href=\"https://resolver.pim.hu/auth/PIM60017\" target=\"_blank\">PIM névtér link</a></p><p>Forrás: [cím és szerző nélkül], Magyar Ipar, 1929. március 20., 3. -- SÁRA: szerző? cím? + hivatkozás az Egy emberre </p></div>",
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: 1868‒1929, gyáros. A Kaszab és Breuer-csavargyár alapítója. Ez a gyár Kassák Lajos egyik korábbi munkahelye volt.</p><p>PIM névtérben szereplő név: Kaszab Aladár</p><p><a href=\"https://resolver.pim.hu/auth/PIM60017\" target=\"_blank\">PIM névtér link</a></p></div>",
     "id": "KL_szemely_0142",
     "metadata": {
       "title": "Kaszab Aladár",
@@ -13320,7 +13320,7 @@
     "type": "személynév"
   },
   "KL_szemely_0254": {
-    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: Simon Jolán öccse, az első világháború alatt orosz hadifogságba esett, és 1919-ben tért haza. Forrás: Kassák Lajos, Egy ember élete (Budapest: Magvető, 1957), 938.</p><p>Forrás: Sára, keresd ki lszi: Egy ember élete </p></div>",
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: Simon Jolán öccse, az első világháború alatt orosz hadifogságba esett, és 1919-ben tért haza. Forrás: Kassák Lajos, Egy ember élete (Budapest: Magvető, 1957), 938.</p></div>",
     "id": "KL_szemely_0254",
     "metadata": {
       "title": "Simon Dezső",
@@ -13330,7 +13330,7 @@
     "type": "személynév"
   },
   "KL_szemely_0255": {
-    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: [?]‒[?], Simon Jolán öccse, a első világháború alatt orosz hadifogságba esett és 1919-ben tért haza.  Forrás: Kassák Lajos, Egy ember élete (Budapest: Magvető, 1957), 840.</p><p>Forrás: Sára, keresd ki lszi: Egy ember élete </p></div>",
+    "html": "<div class=\"entity-div\"><p>Szerkesztői jegyzet: [?]‒[?], Simon Jolán öccse, a első világháború alatt orosz hadifogságba esett és 1919-ben tért haza.  Forrás: Kassák Lajos, Egy ember élete (Budapest: Magvető, 1957), 840.</p></div>",
     "id": "KL_szemely_0255",
     "metadata": {
       "title": "Simon Nándor",
